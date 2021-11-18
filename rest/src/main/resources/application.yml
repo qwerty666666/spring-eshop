@@ -1,0 +1,40 @@
+spring:
+  jpa:
+    open-in-view: false
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  data:
+    web:
+      pageable:
+        page-parameter: page
+        size-parameter: per_page
+        max-page-size: 100
+        default-page-size: 30
+        one-indexed-parameters: true
+  messages:
+    basename: messages, cart_messages
+  web:
+    locale: en_US
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+app:
+  schema: ${APP_SCHEMA}
+  host: ${APP_HOST}
+  port: ${APP_PORT}
+  static-resources-location: ${APP_STATIC_RESOURCES_LOCATION}
+  api-base-path: /api
+  oas:
+    url: /spec
+    spec-file-url: /openapi.yaml
